@@ -13,9 +13,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 @Document("Utilisateur")
 public class Utilisateur implements Serializable {
-	
 	@Id
-	private String id_Utilisateur;
+	private String id;
 	private String nom;
 	private String prenom;
 	private String mail;
@@ -30,7 +29,6 @@ public class Utilisateur implements Serializable {
 		super();
 	}
 	
-
 	public Utilisateur(String nom, String prenom, String mail, String password, String telephone, String universite,
 			String niveau, String entreprise) {
 		super();
@@ -46,12 +44,12 @@ public class Utilisateur implements Serializable {
 
 
 	public String getId_Utilisateur() {
-		return id_Utilisateur;
+		return id;
 	}
 
 
 	public void setId_Utilisateur(String id_Utilisateur) {
-		this.id_Utilisateur = id_Utilisateur;
+		this.id = id_Utilisateur;
 	}
 
 
