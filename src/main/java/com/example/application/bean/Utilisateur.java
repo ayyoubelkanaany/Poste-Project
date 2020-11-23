@@ -13,11 +13,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 @Document("Utilisateur")
 public class Utilisateur implements Serializable {
-<<<<<<< HEAD
-=======
+   ///test
 	//coucou les amis test
 	//gg
->>>>>>> f58dfbf2ce4f293e5d6adc43addf9eae334bf779
+
 	@Id
 	private String id;
 	private String nom;
@@ -29,6 +28,7 @@ public class Utilisateur implements Serializable {
     private String niveau;
     private String entreprise;
     private List<Poste> postes;
+    private boolean active;
 	
 	public Utilisateur() {
 		super();
@@ -47,7 +47,22 @@ public class Utilisateur implements Serializable {
 		this.entreprise = entreprise;
 	}
 
+	public Utilisateur(String nom, String prenom, String mail, String password, String telephone) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.password = password;
+		this.telephone = telephone;
+		
+	}
 
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 	public String getId_Utilisateur() {
 		return id;
 	}

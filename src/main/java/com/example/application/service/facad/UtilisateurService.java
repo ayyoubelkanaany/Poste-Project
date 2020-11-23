@@ -33,6 +33,9 @@ public interface UtilisateurService {
   ///get all user postes
   public List<Poste> getAllUserPoste(String idUtilisateur);
   
- 
+ //
+  public int countRactionsLike(String idUtilisateur,String datePoste);
+  public int countRactionsDislike(String idUtilisateur,String datePoste);
+  public int countCommentaires(String idUtilisateur,String datePoste);
   
 }

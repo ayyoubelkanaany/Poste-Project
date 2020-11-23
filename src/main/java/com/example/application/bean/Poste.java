@@ -16,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Component
 public class Poste implements Serializable {
+	private String etape;
     private String contenu;
     private String lien;
     private String categorie;
@@ -23,7 +24,6 @@ public class Poste implements Serializable {
     private String type;
     private List<Commentaire> commentaires;
     private List<Reaction> reactions;
-    private  MultipartFile fichier ;
     private String fichierNom;
 	public Poste() {
 		super();
@@ -39,17 +39,18 @@ public class Poste implements Serializable {
 	}
 	
 
+	
+	public String getEtape() {
+		return etape;
+	}
+	public void setEtape(String etape) {
+		this.etape = etape;
+	}
 	public String getFichierNom() {
 		return fichierNom;
 	}
 	public void setFichierNom(String fichierNom) {
 		this.fichierNom = fichierNom;
-	}
-	public MultipartFile getFichier() {
-		return fichier;
-	}
-	public void setFichier(MultipartFile fichier) {
-		this.fichier = fichier;
 	}
 	public String getContenu() {
 		return contenu;
