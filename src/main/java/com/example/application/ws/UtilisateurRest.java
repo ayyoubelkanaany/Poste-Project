@@ -31,7 +31,8 @@ public class UtilisateurRest {
 	@Autowired
 	private UtilisateurServiceImpl utilisateurServiceImpl;
     
-    @ApiOperation("cette methode permet d'ajouter un poste pour un utilisateur")
+   
+	@ApiOperation("cette methode permet d'ajouter un poste pour un utilisateur")
 	@RequestMapping(value = "/Utilisateurs/poste/{idUtilisateur}",method = RequestMethod.POST)
 	public Poste addPoste(@PathVariable String idUtilisateur,@RequestBody Poste poste) {
 		return utilisateurServiceImpl.addPoste(poste, idUtilisateur);
@@ -66,6 +67,22 @@ public class UtilisateurRest {
 	}
     
     
+    @ApiOperation("cette methode permet de retourner le nombre de reaction de type like pour un poste")
+ 	@RequestMapping(value = "/Utilisateurs/countlikeReactions",method = RequestMethod.GET)
+    public int countRactionsLike(@RequestParam("idUtilisateur") String idUtilisateur,@RequestParam("datePoste") String datePoste) {
+		return utilisateurServiceImpl.countRactionsLike(idUtilisateur, datePoste);
+	}
+    @ApiOperation("cette methode permet de retourner le nombre de reaction de type Dislike pour un poste ")
+ 	@RequestMapping(value = "/Utilisateurs/countdislikeReactions",method = RequestMethod.GET)
+    public int countRactionsDislike(@RequestParam("idUtilisateur") String idUtilisateur,@RequestParam("datePoste") String datePoste) {
+		return utilisateurServiceImpl.countRactionsDislike(idUtilisateur, datePoste);
+	}
+    @ApiOperation("cette methode permet de retourner le nombre de commentaire pour un poste")
+ 	@RequestMapping(value = "/Utilisateurs/commentaire",method = RequestMethod.GET)
+	public int countCommentaires(@RequestParam("idUtilisateur") String idUtilisateur, @RequestParam("datePoste") String datePoste) {
+		return utilisateurServiceImpl.countCommentaires(idUtilisateur, datePoste);
+	}
+	
     
     
     

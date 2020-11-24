@@ -1,11 +1,6 @@
 package com.example.application.service.facad;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
-
-import org.springframework.web.multipart.MultipartFile;
-
 import com.example.application.bean.Commentaire;
 import com.example.application.bean.Poste;
 import com.example.application.bean.Reaction;
@@ -36,6 +31,9 @@ public interface UtilisateurService {
   ///get all user postes
   public List<Poste> getAllUserPoste(String idUtilisateur);
   
- 
+ //
+  public int countRactionsLike(String idUtilisateur,String datePoste);
+  public int countRactionsDislike(String idUtilisateur,String datePoste);
+  public int countCommentaires(String idUtilisateur,String datePoste);
   
 }

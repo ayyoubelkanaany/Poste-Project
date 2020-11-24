@@ -25,6 +25,7 @@ public class Utilisateur implements Serializable {
     private String niveau;
     private String entreprise;
     private List<Poste> postes;
+    private boolean active;
 	
 	public Utilisateur() {
 		super();
@@ -43,7 +44,22 @@ public class Utilisateur implements Serializable {
 		this.entreprise = entreprise;
 	}
 
+	public Utilisateur(String nom, String prenom, String mail, String password, String telephone) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.password = password;
+		this.telephone = telephone;
+		
+	}
 
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 	public String getId_Utilisateur() {
 		return id;
 	}

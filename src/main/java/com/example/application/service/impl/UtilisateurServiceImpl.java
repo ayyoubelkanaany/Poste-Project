@@ -110,12 +110,15 @@ public Poste updatePoste(String idUtilisateur, Poste poste) {
 //////////////////////////////////////////////////////////les commentaires
 @Override
 public Commentaire addCommentaire(String idUtilisateur, String datePoste, Commentaire commentaire) {  
+	System.out.println("id est "+idUtilisateur);
 	Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
+	Utilisateur commentateur = this.utilisateurDao.findById(commentaire.getCommentateur().getId_Utilisateur()).get();
+	commentaire.setCommentateur(commentateur);
 	for(int i=0;i<u.getPostes().size();i++) {
-		
 		if(u.getPostes().get(i).getDatePoste().equals(datePoste)) {
 			System.out.println("hello3");
 			commentaire.setDateCommentaire(newDate());
+			
 			u.getPostes().get(i).getCommentaires().add(commentaire);
 			this.utilisateurDao.save(u);
 			return commentaire;
@@ -218,5 +221,52 @@ private String newDate() {
 public List<Utilisateur> getUtilisateurByOrderByCountByPostesAsc() {
 	// TODO Auto-generated method stub
 	return utilisateurDao.findByOrderByPostesDesc();
+}
+@Override
+public int countRactionsLike(String idUtilisateur, String datePoste) {
+	int count = 0;
+	Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
+	for(int i=0;i<u.getPostes().size();i++) 
+		 {
+			if(u.getPostes().get(i).getDatePoste().equals(datePoste)) {
+				for(int j=0;j<u.getPostes().get(i).getReactions().size();j++) {
+					if(u.getPostes().get(i).getReactions().get(j).getType().equals("Like")) {
+						count++;
+					}
+				}
+				
+			}
+	}
+	return count;
+}
+@Override
+public int countRactionsDislike(String idUtilisateur, String datePoste) {
+	int count = 0;
+	Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
+	for(int i=0;i<u.getPostes().size();i++) 
+		 {
+			if(u.getPostes().get(i).getDatePoste().equals(datePoste)) {
+				for(int j=0;j<u.getPostes().get(i).getReactions().size();j++) {
+					if(u.getPostes().get(i).getReactions().get(j).getType().equals("Dislike")) {
+						count++;
+					}
+				}
+				
+			}
+	}
+	return count;
+}
+@Override
+public int countCommentaires(String idUtilisateur, String datePoste) {
+	int count = 0;
+	Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
+	for(int i=0;i<u.getPostes().size();i++) 
+		 {
+			if(u.getPostes().get(i).getDatePoste().equals(datePoste)) {
+				count = u.getPostes().get(i).getCommentaires().size();
+			}
+	}
+	return count;
+
 }
 }
