@@ -13,11 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 @Document("Utilisateur")
 public class Utilisateur implements Serializable {
-<<<<<<< HEAD
-=======
-	//coucou les amis test
-	//gg
->>>>>>> f58dfbf2ce4f293e5d6adc43addf9eae334bf779
+
 	@Id
 	private String id;
 	private String nom;

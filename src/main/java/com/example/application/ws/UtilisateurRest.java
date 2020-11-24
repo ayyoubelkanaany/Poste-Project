@@ -30,10 +30,6 @@ import io.swagger.annotations.ApiOperation;
 public class UtilisateurRest {
 	@Autowired
 	private UtilisateurServiceImpl utilisateurServiceImpl;
-
-    
-    
-    
     
     @ApiOperation("cette methode permet d'ajouter un poste pour un utilisateur")
 	@RequestMapping(value = "/Utilisateurs/poste/{idUtilisateur}",method = RequestMethod.POST)
@@ -115,9 +111,31 @@ public class UtilisateurRest {
 	public Utilisateur findById(@PathVariable String id) {
 		return utilisateurServiceImpl.findById(id);
 	}
+    @ApiOperation("cette methode permet de recuperer un utilisateur depuis son mail")	
+    @RequestMapping(value = "/Utilisateurs/mail/{mail}",method = RequestMethod.GET)
+	public Utilisateur findByMail(@PathVariable String mail) {
+		return utilisateurServiceImpl.findByMail(mail);
+	}
     @ApiOperation("cette methode permet de recuperer un utilisateur depuis son nom")	
 	@RequestMapping(value = "/Utilisateurs/nom/{nom}",method = RequestMethod.GET)
 	public List<Utilisateur> getByNom(@PathVariable String nom) {
 		return utilisateurServiceImpl.getByNom(nom);
 	}
+    @ApiOperation("cette methode permet de recuperer un utilisateur depuis le domaine de ces poste")	
+	@RequestMapping(value = "/Utilisateurs/poste/categorie/{categorie}",method = RequestMethod.GET)
+	public List<Utilisateur> getByPostesCategorie(@PathVariable String categorie) {
+		return utilisateurServiceImpl.getByPostesCategorie(categorie);
+	}
+    @ApiOperation("cette methode permet de recuperer un utilisateur depuis la date de ces poste")	
+	@RequestMapping(value = "/Utilisateurs/poste/datePoste/{datePoste}",method = RequestMethod.GET)
+	public List<Utilisateur> getByPostesDatePoste(@PathVariable String datePoste) {
+		return utilisateurServiceImpl.getByPostesCategorie(datePoste);
+	}
+    
+    @ApiOperation("cette methode permet de recuperer un utilisateur depuis la date de ces poste")	
+   	@RequestMapping(value = "/Utilisateurs/count",method = RequestMethod.GET)
+   	public List<Utilisateur> getUtilisateurByOrderByCountByPostesAsc() {
+   		return utilisateurServiceImpl.getUtilisateurByOrderByCountByPostesAsc();
+   	}
+   
 }

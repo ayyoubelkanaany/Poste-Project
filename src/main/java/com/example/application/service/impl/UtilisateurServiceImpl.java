@@ -37,6 +37,14 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		return utilisateurDao.findByNom(nom);
 	}
 	@Override
+	public List<Utilisateur> getByPostesCategorie(String categorie) {
+		return utilisateurDao.findByPostesCategorie(categorie);
+	}
+	@Override
+	public List<Utilisateur> getByPostesDatePoste(String datePoste) {
+		return utilisateurDao.findByPostesDatePoste(datePoste);
+	}
+	@Override
 	public Utilisateur save(Utilisateur utilisateur) {
 		List<Utilisateur> utilisateurs = utilisateurDao.findAll();
 		for (Utilisateur utilisateur1 : utilisateurs) {
@@ -51,7 +59,11 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		
 		return this.utilisateurDao.findById(id).get();
 	}
-	
+	@Override
+	public Utilisateur findByMail(String mail) {
+		
+		return this.utilisateurDao.findByMail(mail);
+	}
     public List<Utilisateur> findAll() {
 		return this.utilisateurDao.findAll();
 	}
@@ -87,6 +99,7 @@ public Poste updatePoste(String idUtilisateur, Poste poste) {
 		if(u.getPostes().get(i).getDatePoste().equals(poste.getDatePoste())){
 			u.getPostes().get(i).setCategorie(poste.getCategorie());
 			u.getPostes().get(i).setContenu(poste.getContenu());
+			u.getPostes().get(i).setEtape(poste.getEtape());
 			this.utilisateurDao.save(u);
 			return u.getPostes().get(i);
 		}
@@ -198,5 +211,12 @@ private String newDate() {
 	SimpleDateFormat DateFor = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 	String stringDate= DateFor.format(date);
 	return stringDate;
+}
+
+//get users orederby postes
+@Override
+public List<Utilisateur> getUtilisateurByOrderByCountByPostesAsc() {
+	// TODO Auto-generated method stub
+	return utilisateurDao.findByOrderByPostesDesc();
 }
 }

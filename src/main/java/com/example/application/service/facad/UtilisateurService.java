@@ -13,9 +13,12 @@ import com.example.application.bean.Utilisateur;
 
 public interface UtilisateurService {
   public List<Utilisateur> getByNom(String nom);
+  public List<Utilisateur> getByPostesCategorie(String categorie);
+  public List<Utilisateur> getByPostesDatePoste(String datePoste);
+  public List<Utilisateur> getUtilisateurByOrderByCountByPostesAsc();
   public Utilisateur save(Utilisateur utilisateur);
   public Utilisateur findById(String id);
-  
+  public Utilisateur findByMail(String mail);
   //delete,add and update poste
   public Poste addPoste(Poste poste,String id);
   public boolean deletePoste(String id,String datePoste);

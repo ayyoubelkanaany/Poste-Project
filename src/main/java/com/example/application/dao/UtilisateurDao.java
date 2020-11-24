@@ -12,4 +12,8 @@ import com.mongodb.internal.operation.FindAndDeleteOperation;
 @Repository
 public interface UtilisateurDao extends MongoRepository<Utilisateur, String> {
 	public List<Utilisateur> findByNom(String nom);
+	public Utilisateur findByMail(String mail);
+	public List<Utilisateur> findByPostesCategorie(String categorie);
+	public List<Utilisateur> findByPostesDatePoste(String datePoste);
+	public List<Utilisateur> findByOrderByPostesDesc();
 }
