@@ -19,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Node
 public class Poste implements Serializable {
-	@Id@GeneratedValue
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String etape;
     private String contenu;
@@ -29,9 +30,9 @@ public class Poste implements Serializable {
     private String type;
     @Relationship(type = "poster",direction = Direction.INCOMING)
     private Utilisateur posteur;
-    @Relationship(type = "poster",direction = Direction.INCOMING)
+    @Relationship(type = "concerne",direction = Direction.INCOMING)
     private List<Commentaire> commentaires;
-    @Relationship(type = "poster",direction = Direction.INCOMING)
+    @Relationship(type = "concerne",direction = Direction.INCOMING)
     private List<Reaction> reactions;
     private String fichierNom;
 	public Poste() {
