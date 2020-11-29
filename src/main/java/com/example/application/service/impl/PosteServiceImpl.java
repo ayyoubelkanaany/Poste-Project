@@ -5,13 +5,14 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.example.application.bean.Poste;
 import com.example.application.bean.Reaction;
 import com.example.application.bean.Utilisateur;
 import com.example.application.dao.PosteDao;
 import com.example.application.service.facad.PosteService;
-
+@Service
 public class PosteServiceImpl implements PosteService{
 	@Autowired
     private PosteDao posteDao;

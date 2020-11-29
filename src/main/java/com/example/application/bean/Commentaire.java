@@ -31,9 +31,6 @@ public class Commentaire implements Serializable{
 		this.commentateur = commentateur;
 	}
 	
-
-	
-
 	public Long getId() {
 		return id;
 	}

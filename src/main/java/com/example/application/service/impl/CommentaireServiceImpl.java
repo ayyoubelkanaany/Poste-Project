@@ -1,11 +1,12 @@
 package com.example.application.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.application.bean.Commentaire;
 import com.example.application.dao.CommentaireDao;
 import com.example.application.service.facad.CommentaireService;
-
+@Service
 public class CommentaireServiceImpl implements CommentaireService{
 	@Autowired
     private CommentaireDao commentaireDao;
@@ -36,7 +37,5 @@ public class CommentaireServiceImpl implements CommentaireService{
 	public Commentaire getById(Long id) {
 		return this.commentaireDao.findById(id).get();
 	}
-
-	
 
 }
