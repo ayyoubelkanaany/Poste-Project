@@ -1,14 +1,22 @@
 package com.example.application.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
+import org.springframework.data.neo4j.core.schema.Relationship.Direction;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Component
-public class Commentaire {
+@Node
+public class Commentaire implements Serializable{
+    @Id
+	private Long id;
 	private String contenu;
+	@Relationship(type = "commenter" ,direction = Direction.OUTGOING)
     private Utilisateur commentateur;
     private String dateCommentaire;
     
@@ -21,8 +29,17 @@ public class Commentaire {
 		this.contenu = contenu;
 		this.commentateur = commentateur;
 	}
+	
 
 	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getDateCommentaire() {
 		return dateCommentaire;

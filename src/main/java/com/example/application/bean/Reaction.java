@@ -1,15 +1,18 @@
 package com.example.application.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Component
-public class Reaction {
-	
+@Node
+public class Reaction implements Serializable{
+	@Id
+	private Long id;
 	private String type;
     private Utilisateur reactif;
     private String dateReaction;
@@ -21,8 +24,13 @@ public class Reaction {
 		this.type = type;
 		this.reactif = reactif;
 	}
-
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getDateReaction() {
 		return dateReaction;
 	}

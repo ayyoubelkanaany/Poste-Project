@@ -4,18 +4,16 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-@Document("Utilisateur")
+import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
+import org.springframework.data.neo4j.core.schema.Relationship.Direction;
+
+
+@Node
 public class Utilisateur implements Serializable {
-
 	@Id
-	private String id;
+	private Long id;
 	private String nom;
 	private String prenom;
 	private String mail;
@@ -60,12 +58,12 @@ public class Utilisateur implements Serializable {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	public String getId_Utilisateur() {
+	public Long getId_Utilisateur() {
 		return id;
 	}
 
 
-	public void setId_Utilisateur(String id_Utilisateur) {
+	public void setId_Utilisateur(Long id_Utilisateur) {
 		this.id = id_Utilisateur;
 	}
 

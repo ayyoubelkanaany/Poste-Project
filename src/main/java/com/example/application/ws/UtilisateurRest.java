@@ -34,17 +34,17 @@ public class UtilisateurRest {
    
 	@ApiOperation("cette methode permet d'ajouter un poste pour un utilisateur")
 	@RequestMapping(value = "/Utilisateurs/poste/{idUtilisateur}",method = RequestMethod.POST)
-	public Poste addPoste(@PathVariable String idUtilisateur,@RequestBody Poste poste) {
+	public Poste addPoste(@PathVariable Long idUtilisateur,@RequestBody Poste poste) {
 		return utilisateurServiceImpl.addPoste(poste, idUtilisateur);
 	}
     @ApiOperation("cette methode permet de supprimer un poste pour un utilisateur")
 	@RequestMapping(value = "/Utilisateurs/poste",method = RequestMethod.DELETE)
-	public boolean deletePoste(@RequestParam("idUtilisateur") String id,@RequestParam("datePoste") String datePoste) {
+	public boolean deletePoste(@RequestParam("idUtilisateur") Long id,@RequestParam("datePoste") String datePoste) {
 		return utilisateurServiceImpl.deletePoste(id, datePoste);
 	}
     @ApiOperation("cette methode permet de mettre a jour un poste pour un utilisateur")
 	@RequestMapping(value = "/Utilisateurs/poste",method = RequestMethod.PUT)
-	public Poste updatePoste(@RequestParam("idUtilisateur") String idUtilisateur,@RequestBody Poste poste) {
+	public Poste updatePoste(@RequestParam("idUtilisateur") Long idUtilisateur,@RequestBody Poste poste) {
 		return utilisateurServiceImpl.updatePoste(idUtilisateur, poste);
 	}
     
@@ -52,34 +52,34 @@ public class UtilisateurRest {
     
     @ApiOperation("cette methode permet d'ajouter un commentaire pour poste pour un utilisateur")
 	@RequestMapping(value = "/Utilisateurs/commentaire",method = RequestMethod.POST)
-	public Commentaire addCommentaire(@RequestParam("idUtilisateur") String idUtilisateur,@RequestParam("datePoste") String datePoste,@RequestBody Commentaire commentaire) {
+	public Commentaire addCommentaire(@RequestParam("idUtilisateur") Long idUtilisateur,@RequestParam("datePoste") String datePoste,@RequestBody Commentaire commentaire) {
 		return utilisateurServiceImpl.addCommentaire(idUtilisateur, datePoste, commentaire);
 	}
     @ApiOperation("cette methode permet de supprimer un commentaire pour poste pour un utilisateur")
 	@RequestMapping(value = "/Utilisateurs/commentaire",method = RequestMethod.DELETE)
-	public boolean deleteCommentaire(@RequestParam("idUtilisateur") String idUtilisateur,@RequestParam("dateCommentaire") String dateCommentaire) {
+	public boolean deleteCommentaire(@RequestParam("idUtilisateur") Long idUtilisateur,@RequestParam("dateCommentaire") String dateCommentaire) {
 		return utilisateurServiceImpl.deleteCommentaire(idUtilisateur, dateCommentaire);
 	}
     @ApiOperation("cette methode permet de mettre a jour un commentaire pour poste pour un utilisateur")
 	@RequestMapping(value = "/Utilisateurs/commentaire",method = RequestMethod.PUT)
-	public Commentaire updateCommentaire(@RequestParam("idUtilisateur")String idUtilisateur, @RequestParam("dateCommentaire")String dateCommentaire,@RequestBody Commentaire commentaire) {
+	public Commentaire updateCommentaire(@RequestParam("idUtilisateur")Long idUtilisateur, @RequestParam("dateCommentaire")String dateCommentaire,@RequestBody Commentaire commentaire) {
 		return utilisateurServiceImpl.updateCommentaire(idUtilisateur, dateCommentaire, commentaire);
 	}
     
     
     @ApiOperation("cette methode permet de retourner le nombre de reaction de type like pour un poste")
  	@RequestMapping(value = "/Utilisateurs/countlikeReactions",method = RequestMethod.GET)
-    public int countRactionsLike(@RequestParam("idUtilisateur") String idUtilisateur,@RequestParam("datePoste") String datePoste) {
+    public int countRactionsLike(@RequestParam("idUtilisateur") Long idUtilisateur,@RequestParam("datePoste") String datePoste) {
 		return utilisateurServiceImpl.countRactionsLike(idUtilisateur, datePoste);
 	}
     @ApiOperation("cette methode permet de retourner le nombre de reaction de type Dislike pour un poste ")
  	@RequestMapping(value = "/Utilisateurs/countdislikeReactions",method = RequestMethod.GET)
-    public int countRactionsDislike(@RequestParam("idUtilisateur") String idUtilisateur,@RequestParam("datePoste") String datePoste) {
+    public int countRactionsDislike(@RequestParam("idUtilisateur") Long idUtilisateur,@RequestParam("datePoste") String datePoste) {
 		return utilisateurServiceImpl.countRactionsDislike(idUtilisateur, datePoste);
 	}
     @ApiOperation("cette methode permet de retourner le nombre de commentaire pour un poste")
  	@RequestMapping(value = "/Utilisateurs/commentaire",method = RequestMethod.GET)
-	public int countCommentaires(@RequestParam("idUtilisateur") String idUtilisateur, @RequestParam("datePoste") String datePoste) {
+	public int countCommentaires(@RequestParam("idUtilisateur") Long idUtilisateur, @RequestParam("datePoste") String datePoste) {
 		return utilisateurServiceImpl.countCommentaires(idUtilisateur, datePoste);
 	}
 	
@@ -88,17 +88,17 @@ public class UtilisateurRest {
     
     @ApiOperation("cette methode permet d'ajouter une reaction pour poste pour un utilisateur")
 	@RequestMapping(value = "/Utilisateurs/reaction",method = RequestMethod.POST)
-	public Reaction addReaction(@RequestParam("idUtilisateur") String idUtilisateur,@RequestParam("datePoste") String datePoste,@RequestBody Reaction reaction) {
+	public Reaction addReaction(@RequestParam("idUtilisateur") Long idUtilisateur,@RequestParam("datePoste") String datePoste,@RequestBody Reaction reaction) {
 		return utilisateurServiceImpl.addReaction(idUtilisateur, datePoste, reaction);
 	}
     @ApiOperation("cette methode permet de supprimer une reaction pour poste pour un utilisateur")
 	@RequestMapping(value = "/Utilisateurs/reaction",method = RequestMethod.DELETE)
-	public boolean deleteReaction(@RequestParam("idUtilisateur")String idUtilisateur,@RequestParam("dateReaction") String dateReaction) {
+	public boolean deleteReaction(@RequestParam("idUtilisateur")Long idUtilisateur,@RequestParam("dateReaction") String dateReaction) {
 		return utilisateurServiceImpl.deleteReaction(idUtilisateur, dateReaction);
 	}
     @ApiOperation("cette methode permet de mettre a jour une reaction pour poste pour un utilisateur")
 	@RequestMapping(value = "/Utilisateurs/reaction",method = RequestMethod.PUT)
-	public Reaction updateReaction(@RequestParam("idUtilisateur") String idUtilisateur,@RequestParam("dateReaction") String dateReaction,@RequestBody Reaction reaction) {
+	public Reaction updateReaction(@RequestParam("idUtilisateur") Long idUtilisateur,@RequestParam("dateReaction") String dateReaction,@RequestBody Reaction reaction) {
 		return utilisateurServiceImpl.updateReaction(idUtilisateur, dateReaction, reaction);
 	}
 
@@ -107,7 +107,7 @@ public class UtilisateurRest {
 
     @ApiOperation("cette methode permet de retourner un utilisateur depuid son id")
 	@RequestMapping(value = "/Utilisateurs/poste/{idUtilisateur}",method = RequestMethod.GET)
-	public List<Poste> getAllUserPoste(@PathVariable String idUtilisateur) {
+	public List<Poste> getAllUserPoste(@PathVariable Long idUtilisateur) {
 		return utilisateurServiceImpl.getAllUserPoste(idUtilisateur);
 	}
     
@@ -125,7 +125,7 @@ public class UtilisateurRest {
 	}
     @ApiOperation("cette methode permet de recuperer un utilisateur depuis son id")	
     @RequestMapping(value = "/Utilisateurs/id/{id}",method = RequestMethod.GET)
-	public Utilisateur findById(@PathVariable String id) {
+	public Utilisateur findById(@PathVariable Long id) {
 		return utilisateurServiceImpl.findById(id);
 	}
     @ApiOperation("cette methode permet de recuperer un utilisateur depuis son mail")	

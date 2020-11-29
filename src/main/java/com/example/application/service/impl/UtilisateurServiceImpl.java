@@ -25,7 +25,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	private FileStorageServiceImpl fileStorageService;
    ////////////////////////////////////////utilisateur
 	@Override
-	public List<Poste> getAllUserPoste(String idUtilisateur) {
+	public List<Poste> getAllUserPoste(Long idUtilisateur) {
 		if(this.utilisateurDao.findById(idUtilisateur).isPresent()) {
 			Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
 			return u.getPostes();
@@ -55,7 +55,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		return this.utilisateurDao.save(utilisateur);
 	}
 	@Override
-	public Utilisateur findById(String id) {
+	public Utilisateur findById(Long id) {
 		
 		return this.utilisateurDao.findById(id).get();
 	}
@@ -71,7 +71,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     //////////////////////////////////////////////////////////les postes
     
     @Override
-    public Poste addPoste(Poste poste,String id) {
+    public Poste addPoste(Poste poste,Long id) {
     Utilisateur u = this.utilisateurDao.findById(id).get();
 	poste.setDatePoste(newDate());
 	u.getPostes().add(poste);
@@ -81,7 +81,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     
 	@Transactional
     @Override
-    public boolean deletePoste(String id, String datePoste) {
+    public boolean deletePoste(Long id, String datePoste) {
 	Utilisateur u = this.utilisateurDao.findById(id).get();
 	for(int i=0;i<u.getPostes().size();i++) {
 		if(u.getPostes().get(i).getDatePoste().equals(datePoste)) {
@@ -93,7 +93,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	return false;
 }
 @Override
-public Poste updatePoste(String idUtilisateur, Poste poste) {
+public Poste updatePoste(Long idUtilisateur, Poste poste) {
 	Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
 	for(int i=0;i<u.getPostes().size();i++) {
 		if(u.getPostes().get(i).getDatePoste().equals(poste.getDatePoste())){
@@ -109,7 +109,7 @@ public Poste updatePoste(String idUtilisateur, Poste poste) {
 
 //////////////////////////////////////////////////////////les commentaires
 @Override
-public Commentaire addCommentaire(String idUtilisateur, String datePoste, Commentaire commentaire) {  
+public Commentaire addCommentaire(Long idUtilisateur, String datePoste, Commentaire commentaire) {  
 	System.out.println("id est "+idUtilisateur);
 	Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
 	Utilisateur commentateur = this.utilisateurDao.findById(commentaire.getCommentateur().getId_Utilisateur()).get();
@@ -128,7 +128,7 @@ public Commentaire addCommentaire(String idUtilisateur, String datePoste, Commen
 }
 @Transactional
 @Override
-public boolean deleteCommentaire(String idUtilisateur, String dateCommentaire) {
+public boolean deleteCommentaire(Long idUtilisateur, String dateCommentaire) {
 	Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
 	for(int i=0;i<u.getPostes().size();i++) {
 		
@@ -146,7 +146,7 @@ public boolean deleteCommentaire(String idUtilisateur, String dateCommentaire) {
 	return false;
 }
 @Override
-public Commentaire updateCommentaire(String idUtilisateur, String dateCommentaire, Commentaire commentaire) {
+public Commentaire updateCommentaire(Long idUtilisateur, String dateCommentaire, Commentaire commentaire) {
 	Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
 	for(int i=0;i<u.getPostes().size();i++) {
 		for(int j=0;j<u.getPostes().get(i).getCommentaires().size();j++) {
@@ -164,7 +164,7 @@ public Commentaire updateCommentaire(String idUtilisateur, String dateCommentair
 
 //////////////////////////////////////////////////////////les reactions
 @Override
-public Reaction addReaction(String idUtilisateur, String datePoste, Reaction reaction) {
+public Reaction addReaction(Long idUtilisateur, String datePoste, Reaction reaction) {
 	Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
 	for(int i=0;i<u.getPostes().size();i++) {
 		if(u.getPostes().get(i).getDatePoste().equals(datePoste)){
@@ -178,7 +178,7 @@ public Reaction addReaction(String idUtilisateur, String datePoste, Reaction rea
 }
 @Transactional
 @Override
-public boolean deleteReaction(String idUtilisateur, String dateReaction) {
+public boolean deleteReaction(Long idUtilisateur, String dateReaction) {
 	Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
 	for(int i=0;i<u.getPostes().size();i++) {
 		for(int j=0;j<u.getPostes().get(i).getReactions().size();j++) {
@@ -193,7 +193,7 @@ public boolean deleteReaction(String idUtilisateur, String dateReaction) {
 	return false;
 }
 @Override
-public Reaction updateReaction(String idUtilisateur, String dateReaction, Reaction reaction) {
+public Reaction updateReaction(Long idUtilisateur, String dateReaction, Reaction reaction) {
 	Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
 	for(int i=0;i<u.getPostes().size();i++) {
 		for(int j=0;j<u.getPostes().get(i).getReactions().size();j++) {
@@ -223,7 +223,7 @@ public List<Utilisateur> getUtilisateurByOrderByCountByPostesAsc() {
 	return utilisateurDao.findByOrderByPostesDesc();
 }
 @Override
-public int countRactionsLike(String idUtilisateur, String datePoste) {
+public int countRactionsLike(Long idUtilisateur, String datePoste) {
 	int count = 0;
 	Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
 	for(int i=0;i<u.getPostes().size();i++) 
@@ -240,7 +240,7 @@ public int countRactionsLike(String idUtilisateur, String datePoste) {
 	return count;
 }
 @Override
-public int countRactionsDislike(String idUtilisateur, String datePoste) {
+public int countRactionsDislike(Long idUtilisateur, String datePoste) {
 	int count = 0;
 	Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
 	for(int i=0;i<u.getPostes().size();i++) 
@@ -257,7 +257,7 @@ public int countRactionsDislike(String idUtilisateur, String datePoste) {
 	return count;
 }
 @Override
-public int countCommentaires(String idUtilisateur, String datePoste) {
+public int countCommentaires(Long idUtilisateur, String datePoste) {
 	int count = 0;
 	Utilisateur u = this.utilisateurDao.findById(idUtilisateur).get();
 	for(int i=0;i<u.getPostes().size();i++) 
