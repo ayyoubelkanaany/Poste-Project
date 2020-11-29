@@ -3,8 +3,8 @@ package com.example.application.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 import org.springframework.data.neo4j.core.schema.Relationship.Direction;
@@ -13,6 +13,7 @@ import org.springframework.data.neo4j.core.schema.Relationship.Direction;
 @Node
 public class Utilisateur implements Serializable {
 	@Id
+	@GeneratedValue
 	private Long id;
 	private String nom;
 	private String prenom;
@@ -22,6 +23,7 @@ public class Utilisateur implements Serializable {
 	private String universite;
     private String niveau;
     private String entreprise;
+    @Relationship
     private List<Poste> postes;
     private boolean active;
 	

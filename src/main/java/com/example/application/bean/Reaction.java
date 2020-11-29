@@ -3,15 +3,14 @@ package com.example.application.bean;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Node
 public class Reaction implements Serializable{
-	@Id
+	@Id @GeneratedValue
 	private Long id;
 	private String type;
     private Utilisateur reactif;

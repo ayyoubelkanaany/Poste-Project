@@ -3,6 +3,7 @@ package com.example.application.bean;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
@@ -13,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Node
 public class Commentaire implements Serializable{
-    @Id
+    @Id@GeneratedValue
 	private Long id;
 	private String contenu;
 	@Relationship(type = "commenter" ,direction = Direction.OUTGOING)

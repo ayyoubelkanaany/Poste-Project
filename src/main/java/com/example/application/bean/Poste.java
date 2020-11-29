@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.core.io.Resource;
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
@@ -18,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Node
 public class Poste implements Serializable {
-	@Id
+	@Id@GeneratedValue
 	private Long id;
 	private String etape;
     private String contenu;
