@@ -6,13 +6,13 @@ import com.example.application.bean.Poste;
 
 public interface PosteService {
 	//delete,add and update poste
-	  public Poste getById(Long id);
+	  public Poste getById(Long idPoste);
 	  public Poste addPoste(Poste poste);
-	  public boolean deletePoste(Long id);
+	  public boolean deletePoste(Long idPoste);
 	  public Poste updatePoste(Poste poste);
 	  public List<Poste> getAllPoste();
 	  //
-	  public int countRactionsLike(Long id);
-	  public int countRactionsDislike(Long id);
-	  public int countCommentaires(Long id);
+	  public int countRactionsLike(Long idPoste);
+	  public int countRactionsDislike(Long idPoste);
+	  public int countCommentaires(Long idPoste);
 }

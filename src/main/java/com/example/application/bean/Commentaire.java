@@ -15,12 +15,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Node
 public class Commentaire implements Serializable{
     @Id@GeneratedValue
-	private Long id;
+	private Long idCommentaire;
 	private String contenu;
 	@Relationship(type = "commenter" ,direction = Direction.OUTGOING)
     private Utilisateur commentateur;
     private String dateCommentaire;
-    
+
 	public Commentaire() {
 		super();
 	}
@@ -31,12 +31,15 @@ public class Commentaire implements Serializable{
 		this.commentateur = commentateur;
 	}
 	
-	public Long getId() {
-		return id;
+	
+	
+
+	public Long getIdCommentaire() {
+		return idCommentaire;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdCommentaire(Long idCommentaire) {
+		this.idCommentaire = idCommentaire;
 	}
 
 	public String getDateCommentaire() {

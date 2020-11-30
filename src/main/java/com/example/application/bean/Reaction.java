@@ -6,15 +6,19 @@ import java.util.Date;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
+import org.springframework.data.neo4j.core.schema.Relationship.Direction;
 
 
 @Node
 public class Reaction implements Serializable{
 	@Id @GeneratedValue
-	private Long id;
+	private Long idReaction;
 	private String type;
+	@Relationship(type = "Reagir",direction = Direction.OUTGOING)
     private Utilisateur reactif;
     private String dateReaction;
+   
 	public Reaction() {
 		super();
 	}
@@ -24,11 +28,13 @@ public class Reaction implements Serializable{
 		this.reactif = reactif;
 	}
 	
-	public Long getId() {
-		return id;
+
+	
+	public Long getIdReaction() {
+		return idReaction;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdReaction(Long idReaction) {
+		this.idReaction = idReaction;
 	}
 	public String getDateReaction() {
 		return dateReaction;

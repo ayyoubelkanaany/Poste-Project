@@ -11,11 +11,20 @@ import com.example.application.bean.Poste;
 import com.example.application.bean.Reaction;
 import com.example.application.bean.Utilisateur;
 import com.example.application.dao.PosteDao;
+import com.example.application.service.facad.CommentaireService;
 import com.example.application.service.facad.PosteService;
+import com.example.application.service.facad.ReactionService;
+import com.example.application.service.facad.UtilisateurService;
 @Service
 public class PosteServiceImpl implements PosteService{
 	@Autowired
     private PosteDao posteDao;
+	@Autowired
+	private CommentaireService CommentaireServiceImpl;
+	@Autowired
+	private UtilisateurServiceImpl utilisateurServiceImpl;
+	@Autowired
+	private ReactionService reactionServiceImpl;
     //////////////////////////////////////////////////////////les postes
     
 	@Override
@@ -24,23 +33,30 @@ public class PosteServiceImpl implements PosteService{
 	}
 	@Override
 	public Poste addPoste(Poste poste) {
-		
+		Utilisateur loadedUtilisateur = this.utilisateurServiceImpl.findById(poste.getPosteur().getIdUtilisateur());
+		poste.setPosteur(loadedUtilisateur);
+		poste.setDatePoste(newDate());
 		return this.posteDao.save(poste);
 	}
 	@Override
-	public boolean deletePoste(Long id) {
-		try {
-			this.posteDao.deleteById(id);
-			return true;
-		} catch (Exception e) {
-			// TODO: handle exception
+	public boolean deletePoste(Long idPoste) {
+		Poste loadedPoste;
+		if( posteDao.findById(idPoste).isPresent()) {
+		loadedPoste = posteDao.findById(idPoste).get();
+		for(int i = 0; i <loadedPoste.getCommentaires().size();i++) {
+			this.CommentaireServiceImpl.deleteCommentaire(loadedPoste.getCommentaires().get(i).getIdCommentaire());
+		}
+		for(int i = 0; i <loadedPoste.getReactions().size();i++) {
+			this.reactionServiceImpl.deleteReaction(loadedPoste.getReactions().get(i).getIdReaction());
 		}
 		
+		this.posteDao.deleteById(idPoste);
+		return true;
+		}
 		return false;
 	}
 	@Override
 	public Poste updatePoste(Poste poste) {
-		
 		return this.posteDao.save(poste);
 	}
 	@Override

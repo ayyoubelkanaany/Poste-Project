@@ -45,8 +45,8 @@ public class UtilisateurRest {
 	}
     @ApiOperation("cette methode permet de recuperer un utilisateur depuis son id")	
     @RequestMapping(value = "/Utilisateurs/id/{id}",method = RequestMethod.GET)
-	public Utilisateur findById(@PathVariable Long id) {
-		return utilisateurServiceImpl.findById(id);
+	public Utilisateur findById(@PathVariable Long idUtilisateur) {
+		return utilisateurServiceImpl.findById(idUtilisateur);
 	}
     @ApiOperation("cette methode permet de recuperer un utilisateur depuis son mail")	
     @RequestMapping(value = "/Utilisateurs/mail/{mail}",method = RequestMethod.GET)

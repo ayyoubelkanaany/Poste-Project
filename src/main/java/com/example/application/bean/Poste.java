@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Poste implements Serializable {
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Long idPsote;
 	private String etape;
     private String contenu;
     private String lien;
@@ -51,11 +51,19 @@ public class Poste implements Serializable {
 	
 
 	
-	public Long getId() {
-		return id;
+	
+	
+	public Long getIdPsote() {
+		return idPsote;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdPsote(Long idPsote) {
+		this.idPsote = idPsote;
+	}
+	public Utilisateur getPosteur() {
+		return posteur;
+	}
+	public void setPosteur(Utilisateur posteur) {
+		this.posteur = posteur;
 	}
 	public String getEtape() {
 		return etape;

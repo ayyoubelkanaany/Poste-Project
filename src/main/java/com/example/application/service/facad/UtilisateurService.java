@@ -12,6 +12,6 @@ public interface UtilisateurService {
   public List<Utilisateur> getByPostesDatePoste(String datePoste);
   public List<Utilisateur> getUtilisateurByOrderByCountByPostesAsc();
   public Utilisateur save(Utilisateur utilisateur);
-  public Utilisateur findById(Long id);
+  public Utilisateur findById(Long idUtilisateur);
   public Utilisateur findByMail(String mail);
 }

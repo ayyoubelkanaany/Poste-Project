@@ -9,12 +9,15 @@ import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 import org.springframework.data.neo4j.core.schema.Relationship.Direction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Node
 public class Utilisateur implements Serializable {
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Long idUtilisateur;
 	private String nom;
 	private String prenom;
 	private String mail;
@@ -23,7 +26,7 @@ public class Utilisateur implements Serializable {
 	private String universite;
     private String niveau;
     private String entreprise;
-    @Relationship
+    @JsonIgnore
     private List<Poste> postes;
     private boolean active;
 	
@@ -60,15 +63,15 @@ public class Utilisateur implements Serializable {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	public Long getId_Utilisateur() {
-		return id;
+	
+
+	public Long getIdUtilisateur() {
+		return idUtilisateur;
 	}
 
-
-	public void setId_Utilisateur(Long id_Utilisateur) {
-		this.id = id_Utilisateur;
+	public void setIdUtilisateur(Long idUtilisateur) {
+		this.idUtilisateur = idUtilisateur;
 	}
-
 
 	public List<Poste> getPostes() {
 		return postes;

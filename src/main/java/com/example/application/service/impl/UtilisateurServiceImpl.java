@@ -48,9 +48,11 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		return this.utilisateurDao.save(utilisateur);
 	}
 	@Override
-	public Utilisateur findById(Long id) {
-		
-		return this.utilisateurDao.findById(id).get();
+	public Utilisateur findById(Long idUtilisateur) {
+		if(utilisateurDao.findById(idUtilisateur).isPresent()) {
+			return this.utilisateurDao.findById(idUtilisateur).get();
+		}
+		return null;
 	}
 	@Override
 	public Utilisateur findByMail(String mail) {
