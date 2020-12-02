@@ -76,6 +76,16 @@ public class PosteRest {
 	public int countCommentaires(@PathVariable Long idPoste) {
 		return posteService.countCommentaires(idPoste);
 	}
+    @ApiOperation("cette methode permet de recuperer la liste des postes par categorie")
+   	@RequestMapping(value = "/postes/categorie/{categorie}",method = RequestMethod.GET)
+   	public List<Poste> findByCategorie(@PathVariable String categorie) {
+   		return posteService.findByCategorie(categorie);
+   	}
+    @ApiOperation("cette methode permet de recuperer la liste des postes par posteur")
+   	@RequestMapping(value = "/postes/mail/{mail}",method = RequestMethod.GET)
+   	public List<Poste> findByPosteurMail(@PathVariable String mail) {
+   		return posteService.findByPosteurMail(mail);
+   	}
         
 	
 }

@@ -98,6 +98,13 @@ public class PosteServiceImpl implements PosteService{
 		String stringDate= DateFor.format(date);
 		return stringDate;
 	}
+	public List<Poste> findByCategorie(String categorie){
+		return this.posteDao.findByCategorie(categorie);
+	}
+	
+	public List<Poste> findByPosteurMail(String mail){
+		return this.posteDao.findByPosteurMail(mail);
+	}
 	@Override
 	public List<Utilisateur> getUtilisateursActive() {
 		List<Utilisateur> returnedUtilisateur= new ArrayList<Utilisateur>();

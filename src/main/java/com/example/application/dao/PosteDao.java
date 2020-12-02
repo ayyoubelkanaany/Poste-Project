@@ -16,4 +16,6 @@ import com.example.application.bean.Utilisateur;
 public interface PosteDao extends Neo4jRepository<Poste, Long> {
 	 @Query("Match(n:Utilisateur {mail:$0})-[r]->(x:Poste)  RETURN  count(x)")
 	 public Long getCountUtilisateuPoste(String mail);
+	 public List<Poste> findByCategorie(String categorie);
+	 public List<Poste> findByPosteurMail(String mail);
 }

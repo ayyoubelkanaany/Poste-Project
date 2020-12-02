@@ -17,4 +17,6 @@ public interface PosteService {
 	  public int countRactionsDislike(Long idPoste);
 	  public int countCommentaires(Long idPoste);
 	  public List<Utilisateur> getUtilisateursActive();
+	  public List<Poste> findByCategorie(String categorie);
+	  public List<Poste> findByPosteurMail(String mail);
 }

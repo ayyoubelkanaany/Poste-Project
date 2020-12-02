@@ -17,7 +17,7 @@ public class Commentaire implements Serializable{
     @Id@GeneratedValue
 	private Long idCommentaire;
 	private String contenu;
-	@Relationship(type = "commente" ,direction = Direction.OUTGOING)
+	@Relationship(type = "commente" ,direction = Direction.INCOMING)
     private Utilisateur commentateur;
     private String dateCommentaire;
 
