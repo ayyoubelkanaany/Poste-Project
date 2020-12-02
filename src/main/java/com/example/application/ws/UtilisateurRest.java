@@ -30,9 +30,9 @@ import io.swagger.annotations.ApiOperation;
 public class UtilisateurRest {
 	@Autowired
 	private UtilisateurServiceImpl utilisateurServiceImpl;
-        
+  
     
-    @ApiOperation("cette methode permet d'ajouter un utilisateur")
+	@ApiOperation("cette methode permet d'ajouter un utilisateur")
 	@RequestMapping(value = "/Utilisateurs",method = RequestMethod.POST)
     public Utilisateur save(@RequestBody Utilisateur utilisateur) {
     	
@@ -44,7 +44,7 @@ public class UtilisateurRest {
 		return utilisateurServiceImpl.findAll();
 	}
     @ApiOperation("cette methode permet de recuperer un utilisateur depuis son id")	
-    @RequestMapping(value = "/Utilisateurs/id/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/Utilisateurs/id/{idUtilisateur}",method = RequestMethod.GET)
 	public Utilisateur findById(@PathVariable Long idUtilisateur) {
 		return utilisateurServiceImpl.findById(idUtilisateur);
 	}
@@ -69,10 +69,5 @@ public class UtilisateurRest {
 		return utilisateurServiceImpl.getByPostesCategorie(datePoste);
 	}
     
-    @ApiOperation("cette methode permet de recuperer un utilisateur depuis la date de ces poste")	
-   	@RequestMapping(value = "/Utilisateurs/count",method = RequestMethod.GET)
-   	public List<Utilisateur> getUtilisateurByOrderByCountByPostesAsc() {
-   		return utilisateurServiceImpl.getUtilisateurByOrderByCountByPostesAsc();
-   	}
    
 }

@@ -3,6 +3,7 @@ package com.example.application.service.facad;
 import java.util.List;
 
 import com.example.application.bean.Poste;
+import com.example.application.bean.Utilisateur;
 
 public interface PosteService {
 	//delete,add and update poste
@@ -15,4 +16,5 @@ public interface PosteService {
 	  public int countRactionsLike(Long idPoste);
 	  public int countRactionsDislike(Long idPoste);
 	  public int countCommentaires(Long idPoste);
+	  public List<Utilisateur> getUtilisateursActive();
 }

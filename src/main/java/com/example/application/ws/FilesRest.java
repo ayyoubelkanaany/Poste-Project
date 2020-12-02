@@ -63,7 +63,6 @@ public class FilesRest {
         } catch (IOException ex) {
             logger.info("Could not determine file type.");
         }
-
         // Fallback to the default content type if type could not be determined
         if(contentType == null) {
             contentType = "application/octet-stream";

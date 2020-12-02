@@ -1,5 +1,7 @@
 package com.example.application.ws;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.application.bean.Poste;
+import com.example.application.bean.Utilisateur;
 import com.example.application.service.facad.PosteService;
 
 import io.swagger.annotations.Api;
@@ -20,16 +23,37 @@ public class PosteRest {
 	@Autowired
     private PosteService posteService;
 	
+	
+	@ApiOperation("cette methode permet de retourner poste selon sont id")
+ 	@RequestMapping(value = "/postes/allactive",method = RequestMethod.GET)
+	public List<Utilisateur> getUtilisateursActive() {
+		return posteService.getUtilisateursActive();
+	}
+
+	@ApiOperation("cette methode permet de retourner poste selon sont id")
+ 	@RequestMapping(value = "/postes/{idPoste}",method = RequestMethod.GET)
+	public Poste getById(@PathVariable Long idPoste) {
+		return posteService.getById(idPoste);
+	}
+	
+	@ApiOperation("cette methode permet de retourner tous les postes")
+ 	@RequestMapping(value = "/postes",method = RequestMethod.GET)
+	public List<Poste> getAllPoste() {
+		return posteService.getAllPoste();
+	}
+	
 	@ApiOperation("cette methode permet d'ajouter un poste ")
 	@RequestMapping(value = "/postes",method = RequestMethod.POST)
 	public Poste addPoste(@RequestBody Poste poste) {
 		return posteService.addPoste(poste);
 	}
+	
     @ApiOperation("cette methode permet de supprimer un poste")
 	@RequestMapping(value = "/postes/{idPoste}",method = RequestMethod.DELETE)
 	public boolean deletePoste(@PathVariable Long idPoste) {
 		return posteService.deletePoste(idPoste);
 	}
+    
     @ApiOperation("cette methode permet de mettre a jour un poste")
 	@RequestMapping(value = "/postes",method = RequestMethod.PUT)
 	public Poste updatePoste(@RequestBody Poste poste) {
@@ -52,5 +76,6 @@ public class PosteRest {
 	public int countCommentaires(@PathVariable Long idPoste) {
 		return posteService.countCommentaires(idPoste);
 	}
+        
 	
 }

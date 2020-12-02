@@ -14,4 +14,5 @@ public interface UtilisateurService {
   public Utilisateur save(Utilisateur utilisateur);
   public Utilisateur findById(Long idUtilisateur);
   public Utilisateur findByMail(String mail);
+  
 }

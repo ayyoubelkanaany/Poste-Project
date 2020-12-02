@@ -3,6 +3,7 @@ package com.example.application.service.impl;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     private UtilisateurDao utilisateurDao;
 	@Autowired
 	private FileStorageServiceImpl fileStorageService;
-   ////////////////////////////////////////utilisateur
+    ////////////////////////////////////////utilisateur
 	
 	@Override
 	public List<Utilisateur> getByNom(String nom) {
@@ -63,13 +64,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		return this.utilisateurDao.findAll();
 	}
     
-    
-
-
-
+   
 private String newDate() {
 	Date date = new Date();
-	SimpleDateFormat DateFor = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+	SimpleDateFormat DateFor = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 	String stringDate= DateFor.format(date);
 	return stringDate;
 }
@@ -80,5 +78,7 @@ public List<Utilisateur> getUtilisateurByOrderByCountByPostesAsc() {
 	// TODO Auto-generated method stub
 	return utilisateurDao.findByOrderByPostesDesc();
 }
+
+
 
 }

@@ -58,7 +58,7 @@ public class ReactionServiceImpl implements ReactionService {
 	}
 	private String newDate() {
 		Date date = new Date();
-		SimpleDateFormat DateFor = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+		SimpleDateFormat DateFor = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		String stringDate= DateFor.format(date);
 		return stringDate;
 	}

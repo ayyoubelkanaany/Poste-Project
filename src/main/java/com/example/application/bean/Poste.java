@@ -21,19 +21,21 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Poste implements Serializable {
 	@Id
 	@GeneratedValue
-	private Long idPsote;
+	private Long idPoste;
 	private String etape;
     private String contenu;
     private String lien;
     private String categorie;
     private String datePoste;
     private String type;
-    @Relationship(type = "poster",direction = Direction.INCOMING)
+    @Relationship(type = "poste",direction = Direction.INCOMING)
     private Utilisateur posteur;
     @Relationship(type = "concerne",direction = Direction.INCOMING)
     private List<Commentaire> commentaires;
     @Relationship(type = "concerne",direction = Direction.INCOMING)
     private List<Reaction> reactions;
+    @Relationship(type = "financier",direction = Direction.INCOMING)
+    private List<Utilisateur> financieurs;
     private String fichierNom;
 	public Poste() {
 		super();
@@ -48,16 +50,17 @@ public class Poste implements Serializable {
 		this.reactions = reactions;
 	}
 	
-	
-
-	
-	
-	
-	public Long getIdPsote() {
-		return idPsote;
+	public List<Utilisateur> getFinancieurs() {
+		return financieurs;
 	}
-	public void setIdPsote(Long idPsote) {
-		this.idPsote = idPsote;
+	public void setFinancieurs(List<Utilisateur> financieurs) {
+		this.financieurs = financieurs;
+	}
+	public Long getIdPoste() {
+		return idPoste;
+	}
+	public void setIdPoste(Long idPoste) {
+		this.idPoste = idPoste;
 	}
 	public Utilisateur getPosteur() {
 		return posteur;

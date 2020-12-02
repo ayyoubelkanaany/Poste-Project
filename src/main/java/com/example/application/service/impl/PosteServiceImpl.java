@@ -1,6 +1,7 @@
 package com.example.application.service.impl;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,7 +50,6 @@ public class PosteServiceImpl implements PosteService{
 		for(int i = 0; i <loadedPoste.getReactions().size();i++) {
 			this.reactionServiceImpl.deleteReaction(loadedPoste.getReactions().get(i).getIdReaction());
 		}
-		
 		this.posteDao.deleteById(idPoste);
 		return true;
 		}
@@ -61,7 +61,6 @@ public class PosteServiceImpl implements PosteService{
 	}
 	@Override
 	public List<Poste> getAllPoste() {
-		
 		return this.posteDao.findAll();
 	}
 	@Override
@@ -95,8 +94,38 @@ public class PosteServiceImpl implements PosteService{
 	}
 	private String newDate() {
 		Date date = new Date();
-		SimpleDateFormat DateFor = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+		SimpleDateFormat DateFor = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		String stringDate= DateFor.format(date);
 		return stringDate;
+	}
+	@Override
+	public List<Utilisateur> getUtilisateursActive() {
+		List<Utilisateur> returnedUtilisateur= new ArrayList<Utilisateur>();
+	    List<Utilisateur> loadedUtilisateur= utilisateurServiceImpl.findAll();
+	  
+		   for (int i = 10;i>0;i--) {
+			   for(int j=0;j<loadedUtilisateur.size();j++) {
+			     if(this.posteDao.getCountUtilisateuPoste(loadedUtilisateur.get(j).getMail())>i) {
+			    	 if(returnedUtilisateur.size()==0) {
+			    		 returnedUtilisateur.add(loadedUtilisateur.get(j));
+			    	 }
+			    	 else {
+			    		 
+			    	 for (int j2 = 0; j2 < returnedUtilisateur.size(); j2++) {
+			    		 if(loadedUtilisateur.get(j).getMail()==returnedUtilisateur.get(j2).getMail()) {
+			    			 
+			    		 }
+			    		 else {
+			    			 returnedUtilisateur.add(loadedUtilisateur.get(j));
+			    		 }
+						
+					}
+			    	 }
+			    	 
+			  }
+			}
+		}
+		System.out.println(returnedUtilisateur.size());
+		return returnedUtilisateur;
 	}
 }

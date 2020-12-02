@@ -15,7 +15,7 @@ public class Reaction implements Serializable{
 	@Id @GeneratedValue
 	private Long idReaction;
 	private String type;
-	@Relationship(type = "Reagir",direction = Direction.OUTGOING)
+	@Relationship(type = "Reagie",direction = Direction.OUTGOING)
     private Utilisateur reactif;
     private String dateReaction;
    
@@ -27,8 +27,6 @@ public class Reaction implements Serializable{
 		this.type = type;
 		this.reactif = reactif;
 	}
-	
-
 	
 	public Long getIdReaction() {
 		return idReaction;
